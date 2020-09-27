@@ -3,6 +3,8 @@ package com.github.javaxcel.styler;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.ss.usermodel.*;
 
+import java.util.stream.IntStream;
+
 public final class ExcelStyler {
 
     public static final int HSSF_MAX_ROWS = 65_536; // 2^16
@@ -18,15 +20,14 @@ public final class ExcelStyler {
      *
      * <p> This can be affected by font size and font family.
      * If you want this process well, set up the same font family into all cells.
+     * This process will be perform in parallel.
      *
      * @param sheet        excel sheet
      * @param numOfColumns number of the columns that wanted to make fit contents.
      * @see Sheet#autoSizeColumn(int)
      */
     public static void autoResizeColumns(Sheet sheet, int numOfColumns) {
-        for (int i = 0; i < numOfColumns; i++) {
-            sheet.autoSizeColumn(i);
-        }
+        IntStream.range(0, numOfColumns).parallel().forEach(sheet::autoSizeColumn);
     }
 
     /**
