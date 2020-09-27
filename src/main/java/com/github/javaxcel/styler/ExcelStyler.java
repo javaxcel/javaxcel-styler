@@ -33,6 +33,9 @@ public final class ExcelStyler {
     /**
      * Hides extraneous rows.
      *
+     * <p> This process must not be performed in parallel.
+     * If try it, this will throw {@link java.util.ConcurrentModificationException}.
+     *
      * @param sheet     excel sheet
      * @param numOfRows number of the rows that have contents.
      * @see Row#setZeroHeight(boolean)
@@ -52,6 +55,18 @@ public final class ExcelStyler {
 
     /**
      * Hides extraneous columns.
+     *
+     * <p> This process shouldn't be performed in parallel.
+     * If try it, this is about 46% slower when handled in parallel
+     * than when handled in sequential.
+     *
+     * <pre>{@code
+     *     +--------+----------+
+     *     | single | parallel |
+     *     +--------+----------+
+     *     | 15s    | 22s      |
+     *     +--------+----------+
+     * }</pre>
      *
      * @param sheet        excel sheet
      * @param numOfColumns number of the columns that have contents.
