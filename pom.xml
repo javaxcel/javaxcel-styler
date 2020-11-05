@@ -6,12 +6,12 @@
 
     <groupId>com.github.javaxcel</groupId>
     <artifactId>javaxcel-styler</artifactId>
-    <version>0.2.0</version>
+    <version>0.2.1</version>
     <packaging>jar</packaging>
 
     <name>Javaxcel Styler</name>
     <description>Excel styler for javaxcel core.</description>
-    <url>https://github.com/javaxcel/javaxcel-styler</url>
+    <url>https://github.com/javaxcel/${artifactId}</url>
 
     <licenses>
         <license>
