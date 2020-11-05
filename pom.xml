@@ -76,6 +76,14 @@
             <version>${apache.poi.version}</version>
         </dependency>
 
+        <!-- Common Utils -->
+        <dependency>
+            <groupId>io.github.imsejin</groupId>
+            <artifactId>common-utils</artifactId>
+            <version>0.3.2</version>
+            <scope>test</scope>
+        </dependency>
+
         <!-- Javaxcel Core -->
         <dependency>
             <groupId>com.github.javaxcel</groupId>
