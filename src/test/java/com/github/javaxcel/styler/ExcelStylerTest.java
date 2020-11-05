@@ -32,7 +32,7 @@ public class ExcelStylerTest {
         // when
         List<Product> products = MockFactory.generateRandomProducts(1000);
         ExcelWriter.init(workbook, Product.class)
-                .adjustSheet((sheet, numOfRows, numOfColumns) -> ExcelStyler.autoResizeColumns(sheet, numOfColumns))
+                .adjustSheet((sheet, numOfRows, numOfColumns) -> Utils.autoResizeColumns(sheet, numOfColumns))
                 .write(out, products);
 
         // then
@@ -106,7 +106,7 @@ public class ExcelStylerTest {
                     new BodyStyleConfig().configure(new Configurer(style, font));
                     return style;
                 })
-                .adjustSheet((sheet, numOfRows, numOfColumns) -> ExcelStyler.autoResizeColumns(sheet, numOfColumns))
+                .adjustSheet((sheet, numOfRows, numOfColumns) -> Utils.autoResizeColumns(sheet, numOfColumns))
                 .write(out, products);
 
         // then

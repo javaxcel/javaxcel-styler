@@ -7,9 +7,9 @@ import org.apache.poi.ss.usermodel.Sheet;
 
 import java.util.stream.IntStream;
 
-public final class ExcelStyler {
+public final class Utils {
 
-    private ExcelStyler() {
+    private Utils() {
     }
 
     /**
