@@ -1,4 +1,4 @@
-package com.github.javaxcel.model;
+package com.github.javaxcel.styler.model;
 
 import com.github.javaxcel.annotation.ExcelColumn;
 import lombok.*;
@@ -11,15 +11,15 @@ import lombok.*;
 @EqualsAndHashCode
 public class Product {
 
-    @ExcelColumn("상품번호")
+    @ExcelColumn(name = "상품번호")
     private long serialNumber;
 
     private String name;
 
-    @ExcelColumn("API_ID")
+    @ExcelColumn(name = "API_ID")
     private String apiId;
 
-    @ExcelColumn(value = "가로")
+    @ExcelColumn(name = "가로")
     private Double width;
 
     @ExcelColumn(defaultValue = "(empty)") // Default value is ineffective to primitive type.
@@ -27,7 +27,7 @@ public class Product {
 
     private double height;
 
-    @ExcelColumn(value = "WEIGHT", defaultValue = "0") // Default value is effective except primitive type.
+    @ExcelColumn(name = "WEIGHT", defaultValue = "0") // Default value is effective except primitive type.
     private Double weight;
 
 }

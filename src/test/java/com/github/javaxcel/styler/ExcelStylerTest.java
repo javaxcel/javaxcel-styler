@@ -1,18 +1,21 @@
 package com.github.javaxcel.styler;
 
-import com.github.javaxcel.model.Product;
-import com.github.javaxcel.model.factory.MockFactory;
+import com.github.javaxcel.styler.conf.BodyStyleConfig;
+import com.github.javaxcel.styler.conf.HeaderStyleConfig;
+import com.github.javaxcel.styler.config.Configurer;
+import com.github.javaxcel.styler.model.Product;
+import com.github.javaxcel.styler.model.factory.MockFactory;
 import com.github.javaxcel.out.ExcelWriter;
 import lombok.Cleanup;
 import lombok.SneakyThrows;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class ExcelStylerTest {
 
@@ -33,7 +36,7 @@ public class ExcelStylerTest {
                 .write(out, products);
 
         // then
-        assertTrue(file.exists());
+        assertThat(file).exists();
     }
 
     @Test
@@ -49,11 +52,14 @@ public class ExcelStylerTest {
         // when
         List<Product> products = MockFactory.generateRandomProducts(1000);
         ExcelWriter.init(workbook, Product.class)
-                .headerStyle((style, font) -> ExcelStyler.applyBasicHeaderStyle(style, font, "NanumGothic"))
+                .headerStyle((style, font) -> {
+                    new HeaderStyleConfig().configure(new Configurer(style, font));
+                    return style;
+                })
                 .write(out, products);
 
         // then
-        assertTrue(file.exists());
+        assertThat(file).exists();
     }
 
     @Test
@@ -69,11 +75,14 @@ public class ExcelStylerTest {
         // when
         List<Product> products = MockFactory.generateRandomProducts(1000);
         ExcelWriter.init(workbook, Product.class)
-                .columnStyles((style, font) -> ExcelStyler.applyBasicColumnStyle(style, font, "NanumGothic"))
+                .columnStyles((style, font) -> {
+                    new BodyStyleConfig().configure(new Configurer(style, font));
+                    return style;
+                })
                 .write(out, products);
 
         // then
-        assertTrue(file.exists());
+        assertThat(file).exists();
     }
 
     @Test
@@ -90,16 +99,18 @@ public class ExcelStylerTest {
         List<Product> products = MockFactory.generateRandomProducts(1000);
         ExcelWriter.init(workbook, Product.class)
                 .headerStyle((style, font) -> {
-                    ExcelStyler.drawBorder(style);
-                    ExcelStyler.alignMiddle(style);
-                    ExcelStyler.dyeBackground(style);
+                    new HeaderStyleConfig().configure(new Configurer(style, font));
                     return style;
                 })
-                .columnStyles((style, font) -> ExcelStyler.drawBorder(style))
+                .columnStyles((style, font) -> {
+                    new BodyStyleConfig().configure(new Configurer(style, font));
+                    return style;
+                })
+                .adjustSheet((sheet, numOfRows, numOfColumns) -> ExcelStyler.autoResizeColumns(sheet, numOfColumns))
                 .write(out, products);
 
         // then
-        assertTrue(file.exists());
+        assertThat(file).exists();
     }
 
 }

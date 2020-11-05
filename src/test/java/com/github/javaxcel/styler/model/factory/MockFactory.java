@@ -1,6 +1,6 @@
-package com.github.javaxcel.model.factory;
+package com.github.javaxcel.styler.model.factory;
 
-import com.github.javaxcel.model.Product;
+import com.github.javaxcel.styler.model.Product;
 
 import java.util.*;
 
@@ -37,7 +37,7 @@ public final class MockFactory {
             double height = RANDOM.nextDouble() * 100;
             Double weight = RANDOM.nextDouble() >= 0.5 ? RANDOM.nextDouble() * 1000 : null;
 
-            Product product = new com.github.javaxcel.model.Product(serialNumber, name, apiId, width, depth, height, weight);
+            Product product = new Product(serialNumber, name, apiId, width, depth, height, weight);
             products.add(product);
         }
 
