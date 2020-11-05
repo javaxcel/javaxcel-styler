@@ -1,16 +1,13 @@
 package com.github.javaxcel.styler;
 
 import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.SpreadsheetVersion;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
 
 import java.util.stream.IntStream;
 
 public final class ExcelStyler {
-
-    public static final int HSSF_MAX_ROWS = 65_536; // 2^16
-    public static final int HSSF_MAX_COLUMNS = 256; // 2^8
-    public static final int XSSF_MAX_ROWS = 1_048_576; // 2^20
-    public static final int XSSF_MAX_COLUMNS = 16_384; // 2^14
 
     private ExcelStyler() {
     }
@@ -42,8 +39,8 @@ public final class ExcelStyler {
      */
     public static void hideExtraRows(Sheet sheet, int numOfRows) {
         int maxRows = sheet instanceof HSSFSheet
-                ? HSSF_MAX_ROWS
-                : XSSF_MAX_ROWS;
+                ? SpreadsheetVersion.EXCEL97.getMaxRows()
+                : SpreadsheetVersion.EXCEL2007.getMaxRows();
 
         for (int i = numOfRows; i < maxRows; i++) {
             Row row = sheet.getRow(i);
@@ -61,11 +58,11 @@ public final class ExcelStyler {
      * than when handled in sequential.
      *
      * <pre>{@code
-     *     +--------+----------+
-     *     | single | parallel |
-     *     +--------+----------+
-     *     | 15s    | 22s      |
-     *     +--------+----------+
+     *     +------------+----------+
+     *     | sequential | parallel |
+     *     +------------+----------+
+     *     | 15s        | 22s      |
+     *     +------------+----------+
      * }</pre>
      *
      * @param sheet        excel sheet
@@ -74,105 +71,12 @@ public final class ExcelStyler {
      */
     public static void hideExtraColumns(Sheet sheet, int numOfColumns) {
         int maxColumns = sheet instanceof HSSFSheet
-                ? HSSF_MAX_COLUMNS
-                : XSSF_MAX_COLUMNS;
+                ? SpreadsheetVersion.EXCEL97.getMaxColumns()
+                : SpreadsheetVersion.EXCEL2007.getMaxColumns();
 
         for (int i = numOfColumns; i < maxColumns; i++) {
             sheet.setColumnHidden(i, true);
         }
-    }
-
-    public static CellStyle drawBorder(CellStyle style) {
-        BorderStyle border = BorderStyle.THIN;
-        IndexedColors color = IndexedColors.BLACK;
-        drawBorder(style, border, color);
-
-        return style;
-    }
-
-    public static CellStyle drawBorder(CellStyle style, BorderStyle border, IndexedColors color) {
-        style.setBorderTop(border);
-        style.setBorderRight(border);
-        style.setBorderBottom(border);
-        style.setBorderLeft(border);
-
-        style.setTopBorderColor(color.getIndex());
-        style.setRightBorderColor(color.getIndex());
-        style.setBottomBorderColor(color.getIndex());
-        style.setLeftBorderColor(color.getIndex());
-
-        return style;
-    }
-
-    public static CellStyle dyeBackground(CellStyle style) {
-        dyeBackground(style, FillPatternType.SOLID_FOREGROUND, IndexedColors.GREY_25_PERCENT);
-        return style;
-    }
-
-    public static CellStyle dyeBackground(CellStyle style, FillPatternType pattern, IndexedColors color) {
-        style.setFillPattern(pattern);
-        style.setFillForegroundColor(color.getIndex());
-
-        return style;
-    }
-
-    public static CellStyle alignMiddle(CellStyle style) {
-        alignHorizontally(style, HorizontalAlignment.CENTER);
-        alignVertically(style, VerticalAlignment.CENTER);
-
-        return style;
-    }
-
-    public static CellStyle alignHorizontally(CellStyle style, HorizontalAlignment alignment) {
-        style.setAlignment(alignment);
-        return style;
-    }
-
-    public static CellStyle alignVertically(CellStyle style, VerticalAlignment alignment) {
-        style.setVerticalAlignment(alignment);
-        return style;
-    }
-
-    public static CellStyle applyBasicHeaderStyle(CellStyle style, Font font) {
-        return applyBasicHeaderStyle(style, font, null);
-    }
-
-    public static CellStyle applyBasicHeaderStyle(CellStyle style, Font font, String fontName) {
-        // Configures a font settings.
-        if (fontName != null) font.setFontName(fontName);
-        font.setFontHeightInPoints((short) 12);
-        font.setBold(true);
-        font.setItalic(false);
-        font.setStrikeout(false);
-
-        // Sets up the font
-        style.setFont(font);
-
-        drawBorder(style);
-        dyeBackground(style);
-        alignMiddle(style);
-
-        return style;
-    }
-
-    public static CellStyle applyBasicColumnStyle(CellStyle style, Font font) {
-        return applyBasicColumnStyle(style, font, null);
-    }
-
-    public static CellStyle applyBasicColumnStyle(CellStyle style, Font font, String fontName) {
-        // Configures a font settings.
-        if (fontName != null) font.setFontName(fontName);
-        font.setFontHeightInPoints((short) 10);
-        font.setBold(false);
-        font.setItalic(false);
-        font.setStrikeout(false);
-
-        // Sets up the font
-        style.setFont(font);
-
-        drawBorder(style);
-
-        return style;
     }
 
 }
