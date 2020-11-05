@@ -1,6 +1,6 @@
 package com.github.javaxcel.styler.config;
 
-import com.github.javaxcel.styler.role.Alignment;
+import com.github.javaxcel.styler.role.Alignments;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.usermodel.VerticalAlignment;
@@ -17,12 +17,12 @@ public final class AlignmentConfigurer {
     }
 
     public AlignmentConfigurer horizontal(HorizontalAlignment horizontal) {
-        Alignment.horizontal(this.cellStyle, horizontal);
+        Alignments.horizontal(this.cellStyle, horizontal);
         return this;
     }
 
     public AlignmentConfigurer vertical(VerticalAlignment vertical) {
-        Alignment.vertical(this.cellStyle, vertical);
+        Alignments.vertical(this.cellStyle, vertical);
         return this;
     }
 

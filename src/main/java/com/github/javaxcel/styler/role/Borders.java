@@ -4,7 +4,7 @@ import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.IndexedColors;
 
-public final class Border {
+public final class Borders {
 
     public static void drawTop(CellStyle cellStyle, BorderStyle border) {
         cellStyle.setBorderTop(border);

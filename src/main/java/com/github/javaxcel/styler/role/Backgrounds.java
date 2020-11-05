@@ -4,7 +4,7 @@ import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.FillPatternType;
 import org.apache.poi.ss.usermodel.IndexedColors;
 
-public final class Background {
+public final class Backgrounds {
 
     public static void drawPattern(CellStyle cellStyle, FillPatternType pattern) {
         cellStyle.setFillPattern(pattern);

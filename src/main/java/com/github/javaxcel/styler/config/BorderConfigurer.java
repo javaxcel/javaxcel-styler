@@ -4,7 +4,7 @@ import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.IndexedColors;
 
-import static com.github.javaxcel.styler.role.Border.*;
+import static com.github.javaxcel.styler.role.Borders.*;
 
 public final class BorderConfigurer {
 
