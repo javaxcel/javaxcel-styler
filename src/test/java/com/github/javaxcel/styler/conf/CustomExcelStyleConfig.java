@@ -1,7 +1,7 @@
 package com.github.javaxcel.styler.conf;
 
 import com.github.javaxcel.styler.config.Configurer;
-import com.github.javaxcel.styler.config.ExcelStyleConfig;
+import com.github.javaxcel.styler.ExcelStyleConfig;
 import com.github.javaxcel.styler.role.Fonts;
 import org.apache.poi.ss.usermodel.*;
 

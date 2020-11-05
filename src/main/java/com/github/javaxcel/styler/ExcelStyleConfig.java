@@ -1,4 +1,6 @@
-package com.github.javaxcel.styler.config;
+package com.github.javaxcel.styler;
+
+import com.github.javaxcel.styler.config.Configurer;
 
 @FunctionalInterface
 public interface ExcelStyleConfig {
