@@ -10,7 +10,7 @@
     <packaging>jar</packaging>
 
     <name>Javaxcel Styler</name>
-    <description>Excel styler for javaxcel core.</description>
+    <description>Configurer for decoration of cell style with simple usage.</description>
     <url>https://github.com/javaxcel/${artifactId}</url>
 
     <licenses>
