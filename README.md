@@ -7,9 +7,13 @@
 
 <p align="center">
     <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/javaxcel/javaxcel-styler">
+    <a href="https://lgtm.com/projects/g/javaxcel/javaxcel-styler/context:java"><img alt="Language grade: Java" src="https://img.shields.io/lgtm/grade/java/g/javaxcel/javaxcel-styler.svg?logo=lgtm&logoWidth=18"/></a>
     <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/javaxcel/javaxcel-styler?label=github">
     <img alt="Bintray" src="https://img.shields.io/bintray/v/imsejin/Javaxcel/javaxcel-styler">
     <img alt="Maven Central" src="https://img.shields.io/maven-central/v/com.github.javaxcel/javaxcel-styler">
+</p>
+
+<p align="center">
     <img alt="GitHub All Releases" src="https://img.shields.io/github/downloads/javaxcel/javaxcel-styler/total?label=downloads%20at%20github">
     <img alt="Bintray" src="https://img.shields.io/bintray/dt/imsejin/Javaxcel/javaxcel-styler?label=downloads%20at%20bintray">
     <img alt="GitHub" src="https://img.shields.io/github/license/javaxcel/javaxcel-styler">
@@ -28,7 +32,7 @@ Javaxcel styler is configurer for decoration of cell style with simple usage.
 <dependency>
   <groupId>com.github.javaxcel</groupId>
   <artifactId>javaxcel-styler</artifactId>
-  <version>${javaxcel.version}</version>
+  <version>${javaxcel.styler.version}</version>
 </dependency>
 ```
 
@@ -47,20 +51,21 @@ implementation 'com.github.javaxcel:javaxcel-styler:$javaxcel_styler_version'
 public class DefaultHeaderStyleConfig implements ExcelStyleConfig {
     @Override
     public void configure(Configurer configurer) {
-        configurer.alignment()
-                .horizontal(HorizontalAlignment.CENTER)
-                .vertical(VerticalAlignment.CENTER)
-                .and()
+        configurer
+            	.alignment()
+                    .horizontal(HorizontalAlignment.CENTER)
+                    .vertical(VerticalAlignment.CENTER)
+            	    .and()
                 .background(FillPatternType.SOLID_FOREGROUND, IndexedColors.GREY_25_PERCENT)
                 .border()
-                .leftAndRight(BorderStyle.THIN, IndexedColors.BLACK)
-                .bottom(BorderStyle.MEDIUM, IndexedColors.BLACK)
-                .and()
+                    .leftAndRight(BorderStyle.THIN, IndexedColors.BLACK)
+                    .bottom(BorderStyle.MEDIUM, IndexedColors.BLACK)
+        	        .and()
                 .font()
-                .name("Arial")
-                .size(12)
-                .color(IndexedColors.BLACK)
-                .bold();
+                    .name("Arial")
+                    .size(12)
+                    .color(IndexedColors.BLACK)
+                    .bold();
     }
 }
 ```
