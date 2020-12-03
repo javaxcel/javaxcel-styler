@@ -64,7 +64,7 @@ public class DefaultHeaderStyleConfig implements ExcelStyleConfig {
                 .border()
                     .leftAndRight(BorderStyle.THIN, IndexedColors.BLACK)
                     .bottom(BorderStyle.MEDIUM, IndexedColors.BLACK)
-        	        .and()
+                    .and()
                 .font()
                     .name("Arial")
                     .size(12)
