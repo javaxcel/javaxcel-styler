@@ -50,7 +50,7 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <apache.poi.version>4.1.2</apache.poi.version>
-        <javaxcel.core.version>0.4.2</javaxcel.core.version>
+        <javaxcel.core.version>0.5.2</javaxcel.core.version>
     </properties>
 
     <dependencies>
@@ -74,14 +74,6 @@
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-scratchpad</artifactId>
             <version>${apache.poi.version}</version>
-        </dependency>
-
-        <!-- Common Utils -->
-        <dependency>
-            <groupId>io.github.imsejin</groupId>
-            <artifactId>common-utils</artifactId>
-            <version>0.3.2</version>
-            <scope>test</scope>
         </dependency>
 
         <!-- Javaxcel Core -->
