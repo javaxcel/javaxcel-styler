@@ -1,10 +1,8 @@
 package com.github.javaxcel.styler;
 
-import com.github.javaxcel.exception.UnsupportedWorkbookException;
-import com.github.javaxcel.out.ExcelWriter;
+import com.github.javaxcel.factory.ExcelWriterFactory;
 import com.github.javaxcel.styler.conf.BodyStyleConfig;
 import com.github.javaxcel.styler.conf.HeaderStyleConfig;
-import com.github.javaxcel.styler.config.Configurer;
 import com.github.javaxcel.styler.model.Product;
 import com.github.javaxcel.styler.model.factory.MockFactory;
 import com.github.javaxcel.util.ExcelUtils;
@@ -13,39 +11,22 @@ import io.github.imsejin.common.util.DateTimeUtils;
 import lombok.Cleanup;
 import lombok.SneakyThrows;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.io.TempDir;
+import org.junit.jupiter.api.io.*;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ExcelStylerTest {
 
     private Stopwatch stopwatch;
-
-    private static long getNumOfModels(Workbook workbook) {
-        if (workbook instanceof SXSSFWorkbook) throw new UnsupportedWorkbookException();
-        return ExcelUtils.getSheets(workbook).stream().mapToInt(ExcelUtils::getNumOfModels).sum();
-    }
-
-    @SneakyThrows
-    private static long getNumOfWrittenModels(Class<? extends Workbook> type, File file) {
-        @Cleanup
-        Workbook workbook = type == HSSFWorkbook.class
-                ? new HSSFWorkbook(new FileInputStream(file))
-                : new XSSFWorkbook(file);
-        return getNumOfModels(workbook);
-    }
 
     @BeforeEach
     public void beforeEach() {
@@ -73,15 +54,15 @@ public class ExcelStylerTest {
 
         // when
         List<Product> products = MockFactory.generateRandomProducts(1000);
-        ExcelWriter.init(workbook, Product.class)
-                .adjustSheet((sheet, numOfRows, numOfColumns) -> Utils.autoResizeColumns(sheet, numOfColumns))
+        ExcelWriterFactory.create(workbook, Product.class)
+                .autoResizeCols()
                 .write(out, products);
 
         // then
         assertThat(file)
                 .exists();
         assertThat(products.size())
-                .isEqualTo(getNumOfWrittenModels(HSSFWorkbook.class, file));
+                .isEqualTo(ExcelUtils.getNumOfModels(file));
     }
 
     @Test
@@ -98,18 +79,15 @@ public class ExcelStylerTest {
 
         // when
         List<Product> products = MockFactory.generateRandomProducts(1000);
-        ExcelWriter.init(workbook, Product.class)
-                .headerStyle((style, font) -> {
-                    new HeaderStyleConfig().configure(new Configurer(style, font));
-                    return style;
-                })
+        ExcelWriterFactory.create(workbook, Product.class)
+                .headerStyles(new HeaderStyleConfig())
                 .write(out, products);
 
         // then
         assertThat(file)
                 .exists();
         assertThat(products.size())
-                .isEqualTo(getNumOfWrittenModels(XSSFWorkbook.class, file));
+                .isEqualTo(ExcelUtils.getNumOfModels(file));
     }
 
     @Test
@@ -126,18 +104,15 @@ public class ExcelStylerTest {
 
         // when
         List<Product> products = MockFactory.generateRandomProducts(1000);
-        ExcelWriter.init(workbook, Product.class)
-                .columnStyles((style, font) -> {
-                    new BodyStyleConfig().configure(new Configurer(style, font));
-                    return style;
-                })
+        ExcelWriterFactory.create(workbook, Product.class)
+                .bodyStyles(new BodyStyleConfig())
                 .write(out, products);
 
         // then
         assertThat(file)
                 .exists();
         assertThat(products.size())
-                .isEqualTo(getNumOfWrittenModels(XSSFWorkbook.class, file));
+                .isEqualTo(ExcelUtils.getNumOfModels(file));
     }
 
     @Test
@@ -154,27 +129,17 @@ public class ExcelStylerTest {
 
         // when
         List<Product> products = MockFactory.generateRandomProducts(1000);
-        ExcelWriter.init(workbook, Product.class)
-                .headerStyle((style, font) -> {
-                    new HeaderStyleConfig().configure(new Configurer(style, font));
-                    return style;
-                })
-                .columnStyles((style, font) -> {
-                    new BodyStyleConfig().configure(new Configurer(style, font));
-                    return style;
-                })
-                .adjustSheet((sheet, numOfRows, numOfColumns) -> {
-                    Utils.autoResizeColumns(sheet, numOfColumns);
-                    Utils.hideExtraColumns(sheet, numOfColumns);
-//                    Utils.hideExtraRows(sheet, numOfRows);
-                })
+        ExcelWriterFactory.create(workbook, Product.class)
+                .autoResizeCols().hideExtraRows().hideExtraCols()
+                .headerStyles(new HeaderStyleConfig())
+                .bodyStyles(new BodyStyleConfig())
                 .write(out, products);
 
         // then
         assertThat(file)
                 .exists();
-        assertThat(products.size())
-                .isEqualTo(getNumOfWrittenModels(HSSFWorkbook.class, file));
+//        assertThat(products.size())
+//                .isEqualTo(ExcelUtils.getNumOfModels(file));
     }
 
 }
