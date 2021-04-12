@@ -2,6 +2,7 @@ package com.github.javaxcel.styler;
 
 import com.github.javaxcel.factory.ExcelWriterFactory;
 import com.github.javaxcel.styler.conf.BodyStyleConfig;
+import com.github.javaxcel.styler.conf.CustomExcelStyleConfig;
 import com.github.javaxcel.styler.conf.HeaderStyleConfig;
 import com.github.javaxcel.styler.model.Product;
 import com.github.javaxcel.styler.model.factory.MockFactory;
@@ -80,7 +81,7 @@ class ExcelStylerTest {
         // when
         List<Product> products = MockFactory.generateRandomProducts(1000);
         ExcelWriterFactory.create(workbook, Product.class)
-                .headerStyles(new HeaderStyleConfig())
+                .headerStyles(new CustomExcelStyleConfig())
                 .write(out, products);
 
         // then
@@ -131,15 +132,15 @@ class ExcelStylerTest {
         List<Product> products = MockFactory.generateRandomProducts(1000);
         ExcelWriterFactory.create(workbook, Product.class)
                 .autoResizeCols().hideExtraRows().hideExtraCols()
-                .headerStyles(new HeaderStyleConfig())
-                .bodyStyles(new BodyStyleConfig())
-                .write(out, products);
+                .headerStyles(CustomExcelStyleConfig.getRainbowHeader())
+                .bodyStyle(new BodyStyleConfig())
+                .enumDropdown().write(out, products);
 
         // then
         assertThat(file)
-                .exists();
-//        assertThat(products.size())
-//                .isEqualTo(ExcelUtils.getNumOfModels(file));
+                .exists()
+                .canRead()
+                .canWrite();
     }
 
 }
