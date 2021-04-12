@@ -55,7 +55,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <apache.poi.version>4.1.2</apache.poi.version>
-        <javaxcel.core.version>0.5.3</javaxcel.core.version>
+        <javaxcel.core.version>0.6.0</javaxcel.core.version>
     </properties>
 
     <dependencies>
