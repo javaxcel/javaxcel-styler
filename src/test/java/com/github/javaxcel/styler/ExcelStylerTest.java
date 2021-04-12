@@ -24,18 +24,18 @@ import java.util.concurrent.TimeUnit;
 import static org.assertj.core.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class ExcelStylerTest {
+class ExcelStylerTest {
 
     private Stopwatch stopwatch;
 
     @BeforeEach
-    public void beforeEach() {
+    void beforeEach() {
         this.stopwatch = new Stopwatch(TimeUnit.SECONDS);
         stopwatch.start();
     }
 
     @AfterEach
-    public void afterEach() {
+    void afterEach() {
         stopwatch.stop();
         System.out.println(stopwatch.getStatistics());
     }
@@ -44,7 +44,7 @@ public class ExcelStylerTest {
     @Order(0)
     @DisplayName("autoResizeColumns")
     @SneakyThrows
-    public void autoResizeColumns(@TempDir Path path) {
+    void autoResizeColumns(@TempDir Path path) {
         // given
         File file = new File(path.toFile(), DateTimeUtils.now() + ".xls");
         @Cleanup
@@ -69,7 +69,7 @@ public class ExcelStylerTest {
     @Order(1)
     @DisplayName("applyHeaderStyle")
     @SneakyThrows
-    public void applyHeaderStyle(@TempDir Path path) {
+    void applyHeaderStyle(@TempDir Path path) {
         // given
         File file = new File(path.toFile(), DateTimeUtils.now() + ".xlsx");
         @Cleanup
@@ -94,7 +94,7 @@ public class ExcelStylerTest {
     @Order(2)
     @DisplayName("applyBodyStyle")
     @SneakyThrows
-    public void applyBodyStyle(@TempDir Path path) {
+    void applyBodyStyle(@TempDir Path path) {
         // given
         File file = new File(path.toFile(), DateTimeUtils.now() + ".xlsx");
         @Cleanup
@@ -119,7 +119,7 @@ public class ExcelStylerTest {
     @Order(3)
     @DisplayName("applyMultipleStyle")
     @SneakyThrows
-    public void applyMultipleStyle() {
+    void applyMultipleStyle() {
         // given
         File file = new File("/data", "styled.xls");
         @Cleanup

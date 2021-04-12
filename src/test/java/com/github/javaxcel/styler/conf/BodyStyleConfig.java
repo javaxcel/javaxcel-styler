@@ -9,12 +9,12 @@ public class BodyStyleConfig implements ExcelStyleConfig {
     @Override
     public void configure(Configurer configurer) {
         configurer.border()
-                .all(BorderStyle.THIN, IndexedColors.BLACK)
-                .and()
+                    .all(BorderStyle.THIN, IndexedColors.BLACK)
+                    .and()
                 .font()
-                .name("NanumGothic")
-                .size(10)
-                .color(IndexedColors.BLACK);
+                    .name("NanumGothic")
+                    .size(10)
+                    .color(IndexedColors.BLACK);
     }
 
 }
