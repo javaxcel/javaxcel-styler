@@ -22,6 +22,9 @@ import org.apache.poi.ss.usermodel.IndexedColors;
 
 public final class Backgrounds {
 
+    private Backgrounds() {
+    }
+
     public static void drawPattern(CellStyle cellStyle, FillPatternType pattern) {
         cellStyle.setFillPattern(pattern);
     }

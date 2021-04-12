@@ -22,6 +22,9 @@ import org.apache.poi.ss.usermodel.VerticalAlignment;
 
 public final class Alignments {
 
+    private Alignments() {
+    }
+
     public static void horizontal(CellStyle cellStyle, HorizontalAlignment alignment) {
         cellStyle.setAlignment(alignment);
     }

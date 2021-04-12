@@ -22,6 +22,9 @@ import org.apache.poi.ss.usermodel.IndexedColors;
 
 public final class Fonts {
 
+    private Fonts() {
+    }
+
     public static void name(CellStyle cellStyle, Font font, String name) {
         font.setFontName(name);
         cellStyle.setFont(font);
