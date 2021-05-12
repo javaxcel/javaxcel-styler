@@ -1,33 +1,21 @@
-<p align="center" width="40%">
-	<img  src="./src/main/resources/main-image.png" alt="Javaxcel Styler">
+<p align="center">
+    <img  src="./src/main/resources/javaxcel-styler-logo.png" alt="Javaxcel Styler" width="20%">
 </p>
 
+<h1 align="center">Javaxcel Styler</h1>
 
-
+<p align="center">Configurer for decoration of cell style with simple usage</p>
 
 <p align="center">
-    <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/javaxcel/javaxcel-styler">
     <a href="https://lgtm.com/projects/g/javaxcel/javaxcel-styler/context:java"><img alt="Language grade: Java" src="https://img.shields.io/lgtm/grade/java/g/javaxcel/javaxcel-styler.svg?logo=lgtm&logoWidth=18"/></a>
     <a href="https://frontend.code-inspector.com/project/16362/dashboard"><img alt="Code Inspector" src="https://www.code-inspector.com/project/16362/score/svg"></a>
 </p>
 
 <p align="center">
     <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/javaxcel/javaxcel-styler?label=github">
-    <img alt="Bintray" src="https://img.shields.io/bintray/v/imsejin/Javaxcel/javaxcel-styler">
     <img alt="Maven Central" src="https://img.shields.io/maven-central/v/com.github.javaxcel/javaxcel-styler">
-</p>
-
-<p align="center">
-    <img alt="GitHub All Releases" src="https://img.shields.io/github/downloads/javaxcel/javaxcel-styler/total?label=downloads%20at%20github">
-    <img alt="Bintray" src="https://img.shields.io/bintray/dt/imsejin/Javaxcel/javaxcel-styler?label=downloads%20at%20bintray">
-    <img alt="GitHub" src="https://img.shields.io/github/license/javaxcel/javaxcel-styler">
     <img alt="jdk8" src="https://img.shields.io/badge/jdk-8-orange">
 </p>
-
-
-Javaxcel styler is configurer for decoration of cell style with simple usage.
-
-<br><br>
 
 # Getting started
 
@@ -42,12 +30,10 @@ Javaxcel styler is configurer for decoration of cell style with simple usage.
 
 ```groovy
 // Gradle
-implementation 'com.github.javaxcel:javaxcel-styler:$javaxcel_styler_version'
+implementation group: "com.github.javaxcel", name: "javaxcel-styler", version: "$javaxcelStylerVersion"
 ```
 
-<br>
-
-<br>
+<br><br>
 
 # Examples
 
