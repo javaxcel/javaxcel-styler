@@ -13,14 +13,16 @@
 
 <p align="center">
     <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/javaxcel/javaxcel-styler?label=github">
-    <img alt="Maven Central" src="https://img.shields.io/maven-central/v/com.github.javaxcel/javaxcel-styler">
+    <a href="https://search.maven.org/artifact/com.github.javaxcel/javaxcel-styler">
+        <img alt="Maven Central" src="https://img.shields.io/maven-central/v/com.github.javaxcel/javaxcel-styler">
+    </a>
     <img alt="jdk8" src="https://img.shields.io/badge/jdk-8-orange">
 </p>
-
 # Getting started
 
+### Maven
+
 ```xml
-<!-- Maven -->
 <dependency>
   <groupId>com.github.javaxcel</groupId>
   <artifactId>javaxcel-styler</artifactId>
@@ -28,8 +30,9 @@
 </dependency>
 ```
 
+### Gradle
+
 ```groovy
-// Gradle
 implementation group: "com.github.javaxcel", name: "javaxcel-styler", version: "$javaxcelStylerVersion"
 ```
 
