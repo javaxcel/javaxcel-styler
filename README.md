@@ -7,16 +7,17 @@
 <p align="center">Configurer for decoration of cell style with simple usage</p>
 
 <p align="center">
-    <a href="https://lgtm.com/projects/g/javaxcel/javaxcel-styler/context:java"><img alt="Language grade: Java" src="https://img.shields.io/lgtm/grade/java/g/javaxcel/javaxcel-styler.svg?logo=lgtm&logoWidth=18"/></a>
-    <a href="https://frontend.code-inspector.com/project/16362/dashboard"><img alt="Code Inspector" src="https://www.code-inspector.com/project/16362/score/svg"></a>
-</p>
-
-<p align="center">
-    <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/javaxcel/javaxcel-styler?label=github">
     <a href="https://search.maven.org/artifact/com.github.javaxcel/javaxcel-styler">
-        <img alt="Maven Central" src="https://img.shields.io/maven-central/v/com.github.javaxcel/javaxcel-styler">
+        <img alt="Maven Central" src="https://img.shields.io/maven-central/v/com.github.javaxcel/javaxcel-styler?style=flat-square">
     </a>
-    <img alt="jdk8" src="https://img.shields.io/badge/jdk-8-orange">
+    <img alt="jdk8" src="https://img.shields.io/badge/jdk-8-orange?style=flat-square">
+    <br/>
+    <a href="https://lgtm.com/projects/g/javaxcel/javaxcel-styler/context:java">
+        <img alt="Lgtm grade" src="https://img.shields.io/lgtm/grade/java/g/javaxcel/javaxcel-styler.svg?logo=&logoWidth=&label=lgtm%3A%20code%20quality&&style=flat-square"/>
+    </a>
+    <a href="https://www.codacy.com/gh/javaxcel/javaxcel-styler/dashboard">
+        <img alt="Codacy grade" src="https://img.shields.io/codacy/grade/8a27d2f03abc4028bbcf2160ee02c388?label=codacy%3A%20code%20quality&style=flat-square">
+    </a>
 </p>
 
 # Getting started
