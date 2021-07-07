@@ -28,7 +28,7 @@
 <dependency>
   <groupId>com.github.javaxcel</groupId>
   <artifactId>javaxcel-styler</artifactId>
-  <version>${javaxcel.styler.version}</version>
+  <version>${javaxcel-styler.version}</version>
 </dependency>
 ```
 
