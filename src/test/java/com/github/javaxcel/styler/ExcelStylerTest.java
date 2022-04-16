@@ -1,9 +1,9 @@
 package com.github.javaxcel.styler;
 
-import com.github.javaxcel.factory.ExcelWriterFactory;
+import com.github.javaxcel.Javaxcel;
+import com.github.javaxcel.out.strategy.ExcelWriteStrategy.*;
 import com.github.javaxcel.styler.conf.BodyStyleConfig;
 import com.github.javaxcel.styler.conf.CustomExcelStyleConfig;
-import com.github.javaxcel.styler.conf.HeaderStyleConfig;
 import com.github.javaxcel.styler.model.Product;
 import com.github.javaxcel.styler.model.factory.MockFactory;
 import com.github.javaxcel.util.ExcelUtils;
@@ -14,7 +14,7 @@ import lombok.SneakyThrows;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.io.*;
+import org.junit.jupiter.api.io.TempDir;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -22,7 +22,7 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class ExcelStylerTest {
@@ -55,8 +55,8 @@ class ExcelStylerTest {
 
         // when
         List<Product> products = MockFactory.generateRandomProducts(1000);
-        ExcelWriterFactory.create(workbook, Product.class)
-                .autoResizeCols()
+        Javaxcel.newInstance().writer(workbook, Product.class)
+                .options(new AutoResizedColumns())
                 .write(out, products);
 
         // then
@@ -80,8 +80,8 @@ class ExcelStylerTest {
 
         // when
         List<Product> products = MockFactory.generateRandomProducts(1000);
-        ExcelWriterFactory.create(workbook, Product.class)
-                .headerStyles(new CustomExcelStyleConfig())
+        Javaxcel.newInstance().writer(workbook, Product.class)
+                .options(new HeaderStyles(new CustomExcelStyleConfig()))
                 .write(out, products);
 
         // then
@@ -105,8 +105,8 @@ class ExcelStylerTest {
 
         // when
         List<Product> products = MockFactory.generateRandomProducts(1000);
-        ExcelWriterFactory.create(workbook, Product.class)
-                .bodyStyles(new BodyStyleConfig())
+        Javaxcel.newInstance().writer(workbook, Product.class)
+                .options(new BodyStyles(new BodyStyleConfig()))
                 .write(out, products);
 
         // then
@@ -130,11 +130,11 @@ class ExcelStylerTest {
 
         // when
         List<Product> products = MockFactory.generateRandomProducts(1000);
-        ExcelWriterFactory.create(workbook, Product.class)
-                .autoResizeCols().hideExtraRows().hideExtraCols()
-                .headerStyles(CustomExcelStyleConfig.getRainbowHeader())
-                .bodyStyle(new BodyStyleConfig())
-                .enumDropdown().write(out, products);
+        Javaxcel.newInstance().writer(workbook, Product.class)
+                .options(new AutoResizedColumns(), new HiddenExtraRows(), new HiddenExtraColumns(),
+                        new HeaderStyles(CustomExcelStyleConfig.getRainbowHeader()),
+                        new BodyStyles(new BodyStyleConfig()), new EnumDropdown())
+                .write(out, products);
 
         // then
         assertThat(file)

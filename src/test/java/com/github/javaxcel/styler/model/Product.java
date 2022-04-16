@@ -1,7 +1,7 @@
 package com.github.javaxcel.styler.model;
 
 import com.github.javaxcel.annotation.ExcelColumn;
-import com.github.javaxcel.annotation.ExcelWriterExpression;
+import com.github.javaxcel.annotation.ExcelWriteExpression;
 import lombok.*;
 
 @Getter
@@ -21,7 +21,7 @@ public class Product {
     private String apiId;
 
     @ExcelColumn(dropdownItems = {"Y", "N"})
-    @ExcelWriterExpression("#imported?.getValue()")
+    @ExcelWriteExpression("#imported?.getValue()")
     private YesOrNo imported;
 
     @ExcelColumn(name = "가로")

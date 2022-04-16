@@ -1,13 +1,17 @@
 package com.github.javaxcel.styler.conf;
 
-import com.github.javaxcel.styler.config.Configurer;
 import com.github.javaxcel.styler.ExcelStyleConfig;
+import com.github.javaxcel.styler.config.Configurer;
 import com.github.javaxcel.styler.role.Fonts;
 import org.apache.poi.ss.usermodel.*;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public class CustomExcelStyleConfig implements ExcelStyleConfig {
 
-    public static ExcelStyleConfig[] getRainbowHeader() {
+    public static List<ExcelStyleConfig> getRainbowHeader() {
         ExcelStyleConfig r = it -> it.alignment()
                 .horizontal(HorizontalAlignment.CENTER).vertical(VerticalAlignment.CENTER)
                 .and()
@@ -65,7 +69,7 @@ public class CustomExcelStyleConfig implements ExcelStyleConfig {
                 .and()
                 .font().name("Arial").size(12).bold().color(IndexedColors.WHITE);
 
-        return new ExcelStyleConfig[]{r, a, i, n, b, o, w, s};
+        return Collections.unmodifiableList(Arrays.asList(r, a, i, n, b, o, w, s));
     }
 
     @Override
