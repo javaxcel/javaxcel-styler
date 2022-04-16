@@ -30,12 +30,22 @@
   <artifactId>javaxcel-styler</artifactId>
   <version>${javaxcel-styler.version}</version>
 </dependency>
+
+<!-- Provided dependency -->
+<dependency>
+  <groupId>org.apache.poi</groupId>
+  <artifactId>poi-ooxml</artifactId>
+  <version>${apache-poi.version}</version>
+</dependency>
 ```
 
 ### Gradle
 
 ```groovy
 implementation group: "com.github.javaxcel", name: "javaxcel-styler", version: "$javaxcelStylerVersion"
+
+// Provided dependency
+implementation group: "org.apache.poi", name: "poi-ooxml", version: "$apachePoiVersion"
 ```
 
 <br><br>
