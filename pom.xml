@@ -54,7 +54,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <apache.poi.version>4.1.2</apache.poi.version>
+        <!-- Provided dependency version -->
+        <apache-poi.version>5.2.2</apache-poi.version>
+<!--        <apache-poi.version>4.1.2</apache-poi.version>-->
 
         <!-- Test dependency versions -->
         <junit5.version>5.8.2</junit5.version>
@@ -67,18 +69,9 @@
         <!-- Apache POI -->
         <dependency>
             <groupId>org.apache.poi</groupId>
-            <artifactId>poi</artifactId>
-            <version>${apache.poi.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
-            <version>${apache.poi.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi-ooxml-schemas</artifactId>
-            <version>${apache.poi.version}</version>
+            <version>${apache-poi.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <!-- Javaxcel Core -->
