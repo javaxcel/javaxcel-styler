@@ -79,11 +79,6 @@
             <artifactId>poi-ooxml-schemas</artifactId>
             <version>${apache.poi.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi-scratchpad</artifactId>
-            <version>${apache.poi.version}</version>
-        </dependency>
 
         <!-- Javaxcel Core -->
         <dependency>
