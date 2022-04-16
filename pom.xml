@@ -55,6 +55,9 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <apache.poi.version>4.1.2</apache.poi.version>
+
+        <!-- Test dependency versions -->
+        <junit5.version>5.8.2</junit5.version>
         <javaxcel-core.version>0.8.0</javaxcel-core.version>
     </properties>
 
@@ -93,19 +96,19 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.7.1</version>
+            <version>${junit5.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>5.7.1</version>
+            <version>${junit5.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-params</artifactId>
-            <version>5.7.1</version>
+            <version>${junit5.version}</version>
             <scope>test</scope>
         </dependency>
 
