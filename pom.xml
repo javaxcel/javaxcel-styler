@@ -55,7 +55,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <apache.poi.version>4.1.2</apache.poi.version>
-        <javaxcel.core.version>0.6.0</javaxcel.core.version>
+        <javaxcel-core.version>0.8.0</javaxcel-core.version>
     </properties>
 
     <dependencies>
@@ -85,26 +85,8 @@
         <dependency>
             <groupId>com.github.javaxcel</groupId>
             <artifactId>javaxcel-core</artifactId>
-            <version>${javaxcel.core.version}</version>
+            <version>${javaxcel-core.version}</version>
             <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.apache.poi</groupId>
-                    <artifactId>poi</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.poi</groupId>
-                    <artifactId>poi-ooxml</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.poi</groupId>
-                    <artifactId>poi-ooxml-schemas</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.poi</groupId>
-                    <artifactId>poi-scratchpad</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <!-- Junit 5 -->
