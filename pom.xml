@@ -58,6 +58,7 @@
 
         <!-- Test dependency versions -->
         <junit5.version>5.8.2</junit5.version>
+        <lombok.version>1.18.22</lombok.version>
         <javaxcel-core.version>0.8.0</javaxcel-core.version>
     </properties>
 
@@ -124,7 +125,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.18</version>
+            <version>${lombok.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
