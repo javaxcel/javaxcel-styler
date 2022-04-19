@@ -23,6 +23,7 @@ import org.apache.poi.ss.usermodel.IndexedColors;
 public final class Borders {
 
     private Borders() {
+        throw new UnsupportedOperationException(getClass().getName() + " is not allowed to instantiate");
     }
 
     public static void drawTop(CellStyle cellStyle, BorderStyle border) {

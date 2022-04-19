@@ -33,6 +33,9 @@ public class Configurer {
     final Font font;
 
     public Configurer(CellStyle cellStyle, Font font) {
+        if (cellStyle == null) throw new IllegalArgumentException("Configurer.cellStyle is not allowed to be null");
+        if (font == null) throw new IllegalArgumentException("Configurer.font is not allowed to be null");
+
         this.cellStyle = cellStyle;
         this.font = font;
     }

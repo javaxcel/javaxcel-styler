@@ -23,6 +23,7 @@ import org.apache.poi.ss.usermodel.IndexedColors;
 public final class Backgrounds {
 
     private Backgrounds() {
+        throw new UnsupportedOperationException(getClass().getName() + " is not allowed to instantiate");
     }
 
     public static void drawPattern(CellStyle cellStyle, FillPatternType pattern) {

@@ -23,6 +23,7 @@ import org.apache.poi.ss.usermodel.IndexedColors;
 public final class Fonts {
 
     private Fonts() {
+        throw new UnsupportedOperationException(getClass().getName() + " is not allowed to instantiate");
     }
 
     public static void name(CellStyle cellStyle, Font font, String name) {

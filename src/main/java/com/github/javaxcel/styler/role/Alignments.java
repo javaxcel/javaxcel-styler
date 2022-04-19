@@ -23,6 +23,7 @@ import org.apache.poi.ss.usermodel.VerticalAlignment;
 public final class Alignments {
 
     private Alignments() {
+        throw new UnsupportedOperationException(getClass().getName() + " is not allowed to instantiate");
     }
 
     public static void horizontal(CellStyle cellStyle, HorizontalAlignment alignment) {
