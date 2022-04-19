@@ -31,7 +31,7 @@
   <version>${javaxcel-styler.version}</version>
 </dependency>
 
-<!-- Provided dependency -->
+<!-- Required dependency -->
 <dependency>
   <groupId>org.apache.poi</groupId>
   <artifactId>poi-ooxml</artifactId>
@@ -44,7 +44,7 @@
 ```groovy
 implementation group: "com.github.javaxcel", name: "javaxcel-styler", version: "$javaxcelStylerVersion"
 
-// Provided dependency
+// Required dependency
 implementation group: "org.apache.poi", name: "poi-ooxml", version: "$apachePoiVersion"
 ```
 
