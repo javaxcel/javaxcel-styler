@@ -18,9 +18,16 @@ package com.github.javaxcel.styler;
 
 import com.github.javaxcel.styler.config.Configurer;
 
-@FunctionalInterface
+/**
+ * Configuration of Excel style
+ */
 public interface ExcelStyleConfig {
 
+    /**
+     * Defines the configuration of Excel style.
+     *
+     * @param configurer configurer for Excel style
+     */
     void configure(Configurer configurer);
 
 }
