@@ -1,3 +1,9 @@
+<p>
+    <b>This is migrated to <a href="https://github.com/javaxcel/javaxcel">https://github.com/javaxcel/javaxcel</b>.
+</p>
+
+<hr>
+
 <p align="center">
     <img  src="./src/main/resources/javaxcel-styler-logo.png" alt="Javaxcel Styler" width="20%">
 </p>
